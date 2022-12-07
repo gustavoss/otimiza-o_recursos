@@ -1,14 +1,17 @@
 from openpyxl import load_workbook
 import sys
+import easygui
 
 sys.stdout = open("output.txt", "w")
 
+file_name = easygui.fileopenbox()
+
 #carrega planilha
-wb = load_workbook(filename = 'SJP.xlsm', data_only=True)
+wb = load_workbook(filename = file_name, data_only=True)
 
 #conta número de abas
 sheets_number = len(wb.worksheets)
-print("Quantidade de abas: " + str(sheets_number))
+#print("Quantidade de abas: " + str(sheets_number))
 
 last_row = []
 last_col = []
@@ -145,7 +148,7 @@ for i in range(2, last_row[0]):
                 break
 
 # salva planilha
-wb.save('SJP.xlsx')
+wb.save('Equalização.xlsx')
 sys.stdout.close()
 
 
